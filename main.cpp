@@ -66,25 +66,44 @@ int main() {
     for (int round = 1; round <= 10; round++) {
         cout << "\nRound " << round << ":\n";
 
+        // COFFEE BOOTH
         // 50% chance a new person joins the queue
         if (rand() % 2 == 0) {
             string newName = names[rand() % 15];
             string newDrink = drinks[rand() % 8];
             addTail(head, tail, newName, newDrink);
-            cout << "    " << newName << " joins the line\n";
+            cout << "    " << newName << " joins the coffee line\n";
         }
 
         // Head of queue is served unless empty
         if (head != nullptr) {
-            cout << "    " << head->name << " is served a "
+            cout << "    " << head->name << " is served a(n) "
                  << head->drink << endl;
             serveHead(head, tail);
         }
         else
-            cout << "    No one is in line to be served.\n";
+            cout << "    No one is in the coffee line to be served.\n";
+
+        // MUFFIN BOOTH
+        // 50% chance a new person is joins
+        if (rand() % 2 == 0) {
+            string newName = names[rand() % 15];
+            string newMuffin = muffins[rand() % 5];
+            muffinQueue.push_back(newName + " with a " + newMuffin);
+            cout << "    " << newName << " joins the muffin line\n";
+        }
+
+        // Head of queue is served unless empty
+        if (!muffinQueue.empty()) {
+            cout << "    " << muffinQueue.front() << " is served a muffin\n";
+            muffinQueue.pop_front();
+        }
+        else {
+            cout << "    No one is in the muffin line to be served.\n";
+        }
+
+
     }
-
-
 
     return 0;
 }
