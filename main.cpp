@@ -23,7 +23,7 @@ int main() {
     "Fiona", "George", "Hana", "Ivan", "Jasmine"
     };
 
-string drinks[] = {
+    string drinks[] = {
     "Latte", "Mocha", "Americano", "Espresso",
     "Cappuccino", "Matcha Latte", "Chai Tea", "Hot Chocolate"
     };
