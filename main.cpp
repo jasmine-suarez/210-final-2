@@ -20,8 +20,7 @@ struct Node {
     }
 };
 
-Node* head = nullptr;
-Node* tail = nullptr;
+void addFront(Node *&, Node *&, string, string);
 
 int main() {
     srand(time(0));
@@ -37,6 +36,9 @@ int main() {
     "Cappuccino", "Matcha Latte", "Chai Tea", "Hot Chocolate"
     };
 
+    Node* head = nullptr;
+    Node* tail = nullptr;
+
     // Milestone 2
     cout << "Coffee booth opens:\n";
     for (int i = 0; i < INITIAL_SIZE; i++) {
@@ -45,4 +47,15 @@ int main() {
     }
 
     return 0;
+}
+
+void addFront(Node *&head, Node *&tail, string name, string drink) {
+    Node *newNode = new Node;
+    newNode->name = name;
+    newNode->drink = drink;
+    newNode->next = head;
+    head = newNode;
+    if (tail == nullptr) {
+        tail = newNode;
+    }
 }
