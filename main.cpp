@@ -20,7 +20,8 @@ struct Node {
     }
 };
 
-void addFront(Node *&, Node *&, string, string);
+void addTail(Node *&, Node *&, string, string);
+void serveHead(Node *&, Node *&);
 
 int main() {
     srand(time(0));
@@ -44,7 +45,7 @@ int main() {
     for (int i = 0; i < INITIAL_SIZE; i++) {
         string newName = names[rand() % 15];
         string newDrink = drinks[rand() % 8];
-        addFront(head, tail, newName, newDrink);
+        addTail(head, tail, newName, newDrink);
         cout << "    " << newName << " joins the line\n";
     }
 
@@ -55,7 +56,7 @@ int main() {
         if (rand() % 2 == 0) {
             string newName = names[rand() % 15];
             string newDrink = drinks[rand() % 8];
-            addFront(head, tail, newName, newDrink);
+            addTail(head, tail, newName, newDrink);
             cout << "    " << newName << " joins the line\n";
         }
 
@@ -63,6 +64,7 @@ int main() {
         if (head != nullptr) {
             cout << "    " << head->name << " is served a "
                  << head->drink << endl;
+            serveHead(head, tail);
         }
         else
             cout << "    No one is in line to be served.\n";
@@ -81,4 +83,15 @@ void addTail(Node *&head, Node *&tail, string name, string drink) {
         tail->next = newNode;
         tail = newNode;
     }
+}
+
+void serveHead(Node *&head, Node *&tail) {
+    if (head == nullptr)
+        return;
+
+    Node *temp = head;
+    head = head->next;
+    delete temp;
+    if (head == nullptr)
+        tail = nullptr;
 }
