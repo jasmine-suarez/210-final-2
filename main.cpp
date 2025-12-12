@@ -6,6 +6,8 @@
 #include <ctime>
 using namespace std;
 
+const int INITIAL_SIZE = 3;
+
 // Milesetone 1
 struct Node {
     string name;
@@ -17,6 +19,9 @@ struct Node {
         next = nxt;
     }
 };
+
+Node* head = nullptr;
+Node* tail = nullptr;
 
 int main() {
     srand(time(0));
@@ -34,8 +39,9 @@ int main() {
 
     // Milestone 2
     cout << "Coffee booth opens:\n";
-    for (int i = 0; i < 3; i++) {
-        string newName = names[rand() % 10];
+    for (int i = 0; i < INITIAL_SIZE; i++) {
+        string newName = names[rand() % 15];
+        string newDrink = drinks[rand() % 8];
     }
 
     return 0;
