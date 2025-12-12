@@ -44,15 +44,30 @@ int main() {
     for (int i = 0; i < INITIAL_SIZE; i++) {
         string newName = names[rand() % 15];
         string newDrink = drinks[rand() % 8];
+        addFront(head, tail, newName, newDrink);
+        cout << "    " << newName << " joins the line\n";
+    }
+
+    for (int round = 1; round <= 10; round++) {
+        cout << "\nRound " << round << ":\n";
+
+        // 50% chance a new person joins the queue
+        if (rand() % 2 == 0) {
+            string newName = names[rand() % 15];
+            string newDrink = drinks[rand() % 8];
+            addFront(head, tail, newName, newDrink);
+            cout << "    " << newName << " joins the line\n";
+        }
+
+        //
+
     }
 
     return 0;
 }
 
 void addFront(Node *&head, Node *&tail, string name, string drink) {
-    Node *newNode = new Node;
-    newNode->name = name;
-    newNode->drink = drink;
+    Node *newNode = new Node(name, drink);
     newNode->next = head;
     head = newNode;
     if (tail == nullptr) {
