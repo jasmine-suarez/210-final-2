@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <deque>
 using namespace std;
 
 const int INITIAL_SIZE = 3;
@@ -27,26 +28,39 @@ int main() {
     srand(time(0));
 
     string names[] = {
-    "Aiden", "Bella", "Carlos", "Diana", "Evan",
-    "Fiona", "George", "Hana", "Ivan", "Jasmine",
-    "Aaron", "Cheyenne", "Sophia", "Emily", "Max"
+        "Aiden", "Bella", "Carlos", "Diana", "Evan",
+        "Fiona", "George", "Hana", "Ivan", "Jasmine",
+        "Aaron", "Cheyenne", "Sophia", "Emily", "Max"
     };
 
     string drinks[] = {
-    "Latte", "Mocha", "Americano", "Espresso",
-    "Cappuccino", "Matcha Latte", "Chai Tea", "Hot Chocolate"
+        "Latte", "Mocha", "Americano", "Espresso",
+        "Cappuccino", "Matcha Latte", "Chai Tea", "Hot Chocolate"
     };
 
+    string muffins[] = {
+        "Blueberry Muffin", "Chocolate Chip Muffin", "Banana Nut Muffin",
+        "Lemon Poppy Seed Muffin", "Chocolate Muffin"
+    };
+
+    // Coffee Booth
     Node* head = nullptr;
     Node* tail = nullptr;
 
-    // Milestone 2
-    cout << "Coffee booth opens:\n";
+    // Muffin Booth
+    deque<string> muffinQueue;
+
+    // Coffee Booth Simulation
     for (int i = 0; i < INITIAL_SIZE; i++) {
         string newName = names[rand() % 15];
         string newDrink = drinks[rand() % 8];
         addTail(head, tail, newName, newDrink);
         cout << "    " << newName << " joins the line\n";
+    }
+
+    // Muffin Booth Simulation
+    for (int i = 0; i < INITIAL_SIZE; i++) {
+        muffinQueue.push_back(muffins[rand() % 5]);
     }
 
     for (int round = 1; round <= 10; round++) {
@@ -68,8 +82,9 @@ int main() {
         }
         else
             cout << "    No one is in line to be served.\n";
-
     }
+
+
 
     return 0;
 }
