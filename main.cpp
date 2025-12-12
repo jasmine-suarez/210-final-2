@@ -59,18 +59,26 @@ int main() {
             cout << "    " << newName << " joins the line\n";
         }
 
-        //
+        // Head of queue is served unless empty
+        if (head != nullptr) {
+            cout << "    " << head->name << " is served a "
+                 << head->drink << endl;
+        }
+        else
+            cout << "    No one is in line to be served.\n";
 
     }
 
     return 0;
 }
 
-void addFront(Node *&head, Node *&tail, string name, string drink) {
+void addTail(Node *&head, Node *&tail, string name, string drink) {
     Node *newNode = new Node(name, drink);
-    newNode->next = head;
-    head = newNode;
-    if (tail == nullptr) {
+    newNode->next = nullptr;
+    if (head == nullptr)
+        head = tail = newNode;
+    else {
+        tail->next = newNode;
         tail = newNode;
     }
 }
