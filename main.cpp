@@ -2,6 +2,8 @@
 // IDE used: VS Code
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 // Milesetone 1
@@ -17,6 +19,7 @@ struct Node {
 };
 
 int main() {
+    srand(time(0));
 
     string names[] = {
     "Aiden", "Bella", "Carlos", "Diana", "Evan",
@@ -27,6 +30,12 @@ int main() {
     "Latte", "Mocha", "Americano", "Espresso",
     "Cappuccino", "Matcha Latte", "Chai Tea", "Hot Chocolate"
     };
+
+    // Milestone 2
+    cout << "Coffee booth opens:\n";
+    for (int i = 0; i < 3; i++) {
+        string newName = names[rand() % 10];
+    }
 
     return 0;
 }
