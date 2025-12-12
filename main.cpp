@@ -23,7 +23,8 @@ int main() {
 
     string names[] = {
     "Aiden", "Bella", "Carlos", "Diana", "Evan",
-    "Fiona", "George", "Hana", "Ivan", "Jasmine"
+    "Fiona", "George", "Hana", "Ivan", "Jasmine",
+    "Aaron", "Cheyenne", "Sophia", "Emily", "Max"
     };
 
     string drinks[] = {
