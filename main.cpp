@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <deque>
+#include <vector>
 using namespace std;
 
 const int INITIAL_SIZE = 3;
@@ -23,6 +24,7 @@ struct Node {
 
 void addTail(Node *&, Node *&, string, string);
 void serveHead(Node *&, Node *&);
+void printCoffeeQueue(Node*);
 
 int main() {
     srand(time(0));
@@ -49,6 +51,9 @@ int main() {
 
     // Muffin Booth
     deque<string> muffinQueue;
+
+    // Friendship Bracelet Booth
+    vector<string> braceletQueue;
 
     // Coffee Booth Simulation
     for (int i = 0; i < INITIAL_SIZE; i++) {
@@ -84,6 +89,8 @@ int main() {
         else
             cout << "    No one is in the coffee line to be served.\n";
 
+        printCoffeeQueue(head);
+
         // MUFFIN BOOTH
         // 50% chance a new person is joins
         if (rand() % 2 == 0) {
@@ -95,13 +102,26 @@ int main() {
 
         // Head of queue is served unless empty
         if (!muffinQueue.empty()) {
-            cout << "    " << muffinQueue.front() << " is served a muffin\n";
+            cout << "    " << muffinQueue.front() << " is served a muffin.\n";
             muffinQueue.pop_front();
         }
         else {
             cout << "    No one is in the muffin line to be served.\n";
         }
 
+        // FRIENDSHIP BRACELET BOOTH
+        // 50% chance a new person joins the queue
+        if (rand() % 2 == 0) {
+
+        }
+        // Head of queue is served unless empty
+        if (!braceletQueue.empty()) {
+            cout << "    " << braceletQueue.front() << " is served a friendship bracelet\n";
+            braceletQueue.erase(braceletQueue.begin());
+        }
+        else {
+            cout << "    No one is in the friendship bracelet line to be served.\n";
+        }
 
     }
 
@@ -128,4 +148,14 @@ void serveHead(Node *&head, Node *&tail) {
     delete temp;
     if (head == nullptr)
         tail = nullptr;
+}
+
+void printCoffeeQueue(Node* head) {
+    Node* current = head;
+    cout << "\nCoffee Queue:\n";
+    while (current != nullptr) {
+        cout << "    " << current->name << " with a " << current->drink << endl;
+        current = current->next;
+    }
+    cout << endl;
 }
