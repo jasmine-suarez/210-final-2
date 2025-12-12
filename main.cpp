@@ -33,7 +33,8 @@ int main() {
     string names[] = {
         "Aiden", "Bella", "Carlos", "Diana", "Evan",
         "Fiona", "George", "Hana", "Ivan", "Jasmine",
-        "Aaron", "Cheyenne", "Sophia", "Emily", "Max"
+        "Aaron", "Cheyenne", "Sophia", "Emily", "Max",
+        "Jaimee", "Janae", "Bianca", "Miguel", "Caitlin"
     };
 
     string drinks[] = {
@@ -62,7 +63,7 @@ int main() {
     // Coffee Booth Simulation
     cout << "Initial Coffee Line:\n";
     for (int i = 0; i < INITIAL_SIZE; i++) {
-        string newName = names[rand() % 15];
+        string newName = names[rand() % 20];
         string newDrink = drinks[rand() % 8];
         addTail(head, tail, newName, newDrink);
         cout << "    " << newName << " joins the coffee line.\n";
@@ -74,7 +75,7 @@ int main() {
     }
 
     for (int round = 1; round <= 10; round++) {
-        cout << "\nRound " << round << ":\n";
+        cout << "\n--- Round " << round << " ---\n";
 
         // COFFEE BOOTH
         // 50% chance a new person joins the queue
@@ -97,7 +98,7 @@ int main() {
         // MUFFIN BOOTH
         // 50% chance a new person is joins
         if (rand() % 2 == 0) {
-            string newName = names[rand() % 15];
+            string newName = names[rand() % 20];
             string newMuffin = muffins[rand() % 5];
             muffinQueue.push_back(newName + " with a " + newMuffin);
             cout << "    " << newName << " joins the muffin line.\n";
@@ -115,7 +116,7 @@ int main() {
         // FRIENDSHIP BRACELET BOOTH
         // 50% chance a new person joins the queue
         if (rand() % 2 == 0) {
-            string newName = names[rand() % 15];
+            string newName = names[rand() % 20];
             braceletQueue.push_back(newName);
             cout << "    " << newName << " joins the friendship bracelet line.\n";
         }
@@ -132,7 +133,7 @@ int main() {
         // TEA BOOTH
         // 50% chance a new person joins the queue
         if (rand() % 2 == 0) {
-            string newName = names[rand() % 15];
+            string newName = names[rand() % 20];
             teaQueue.push_back(newName);
             cout << "    " << newName << " joins the tea line.\n";
         }
@@ -147,7 +148,23 @@ int main() {
         }
 
         // QUEUE STATUS
-        printCoffeeQueue(head);
+            //coffee Queue Status
+            printCoffeeQueue(head);
+
+            // Muffin Queue Status
+            cout << "Muffin Queue:\n";
+            for (const auto& person : muffinQueue) {
+                cout << "    " << person << endl;
+            }
+
+            // Friendship Bracelet Queue Status
+            cout << "Friendship Bracelet Queue:\n";
+
+            // Tea Queue Status
+            cout << "Tea Queue:\n";
+            for (const auto& person : teaQueue) {
+                cout << "    " << person << endl;
+            }
 
     }
 
