@@ -55,6 +55,9 @@ int main() {
     // Friendship Bracelet Booth
     vector<string> braceletQueue;
 
+    // Tea Booth
+    list<string> teaQueue;
+
     // Coffee Booth Simulation
     for (int i = 0; i < INITIAL_SIZE; i++) {
         string newName = names[rand() % 15];
@@ -123,6 +126,10 @@ int main() {
         else {
             cout << "    No one is in the friendship bracelet line to be served.\n";
         }
+
+        // TEA BOOTH
+        // 50% chance a new person joins the queue
+        if ()
 
         // QUEUE STATUS
         printCoffeeQueue(head);
