@@ -6,6 +6,7 @@
 #include <ctime>
 #include <deque>
 #include <vector>
+#include <list>
 using namespace std;
 
 const int INITIAL_SIZE = 3;
@@ -59,6 +60,7 @@ int main() {
     list<string> teaQueue;
 
     // Coffee Booth Simulation
+    cout << "Initial Coffee Line:\n";
     for (int i = 0; i < INITIAL_SIZE; i++) {
         string newName = names[rand() % 15];
         string newDrink = drinks[rand() % 8];
@@ -129,7 +131,20 @@ int main() {
 
         // TEA BOOTH
         // 50% chance a new person joins the queue
-        if ()
+        if (rand() % 2 == 0) {
+            string newName = names[rand() % 15];
+            teaQueue.push_back(newName);
+            cout << "    " << newName << " joins the tea line.\n";
+        }
+
+        // Head of queue is served unless empty
+        if (!teaQueue.empty()) {
+            cout << "    " << teaQueue.front() << " is served a cup of tea.\n";
+            teaQueue.pop_front();
+        }
+        else {
+            cout << "    No one is in the tea line to be served.\n";
+        }
 
         // QUEUE STATUS
         printCoffeeQueue(head);
