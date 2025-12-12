@@ -60,7 +60,7 @@ int main() {
         string newName = names[rand() % 15];
         string newDrink = drinks[rand() % 8];
         addTail(head, tail, newName, newDrink);
-        cout << "    " << newName << " joins the line\n";
+        cout << "    " << newName << " joins the coffee line.\n";
     }
 
     // Muffin Booth Simulation
@@ -77,7 +77,7 @@ int main() {
             string newName = names[rand() % 15];
             string newDrink = drinks[rand() % 8];
             addTail(head, tail, newName, newDrink);
-            cout << "    " << newName << " joins the coffee line\n";
+            cout << "    " << newName << " joins the coffee line.\n";
         }
 
         // Head of queue is served unless empty
@@ -89,20 +89,18 @@ int main() {
         else
             cout << "    No one is in the coffee line to be served.\n";
 
-        printCoffeeQueue(head);
-
         // MUFFIN BOOTH
         // 50% chance a new person is joins
         if (rand() % 2 == 0) {
             string newName = names[rand() % 15];
             string newMuffin = muffins[rand() % 5];
             muffinQueue.push_back(newName + " with a " + newMuffin);
-            cout << "    " << newName << " joins the muffin line\n";
+            cout << "    " << newName << " joins the muffin line.\n";
         }
 
         // Head of queue is served unless empty
         if (!muffinQueue.empty()) {
-            cout << "    " << muffinQueue.front() << " is served a muffin.\n";
+            cout << "    " << muffinQueue.front() << " is served.\n";
             muffinQueue.pop_front();
         }
         else {
@@ -112,16 +110,22 @@ int main() {
         // FRIENDSHIP BRACELET BOOTH
         // 50% chance a new person joins the queue
         if (rand() % 2 == 0) {
-
+            string newName = names[rand() % 15];
+            braceletQueue.push_back(newName);
+            cout << "    " << newName << " joins the friendship bracelet line.\n";
         }
+
         // Head of queue is served unless empty
         if (!braceletQueue.empty()) {
-            cout << "    " << braceletQueue.front() << " is served a friendship bracelet\n";
+            cout << "    " << braceletQueue.front() << " bought a friendship bracelet\n";
             braceletQueue.erase(braceletQueue.begin());
         }
         else {
             cout << "    No one is in the friendship bracelet line to be served.\n";
         }
+
+        // QUEUE STATUS
+        printCoffeeQueue(head);
 
     }
 
