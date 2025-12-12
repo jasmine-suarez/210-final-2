@@ -9,9 +9,24 @@ struct Node {
     string name;
     string drink;
     Node* next;
+    Node(string n, string d, Node* nxt = nullptr) {
+        name = n;
+        drink = d;
+        next = nxt;
+    }
 };
 
 int main() {
+
+    string names[] = {
+    "Aiden", "Bella", "Carlos", "Diana", "Evan",
+    "Fiona", "George", "Hana", "Ivan", "Jasmine"
+    };
+
+string drinks[] = {
+    "Latte", "Mocha", "Americano", "Espresso",
+    "Cappuccino", "Matcha Latte", "Chai Tea", "Hot Chocolate"
+    };
 
     return 0;
 }
